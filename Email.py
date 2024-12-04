@@ -3,7 +3,9 @@ import os
 from dotenv import load_dotenv
 load_dotenv()
 name_adresse = "Александр"
+adresse_email = 'Xohshg@yandex.ru'
 name_sender = "Никита"
+sender_email = 'voroninnikita412@yandex.ru'
 website = "https://dvmn.org/referrals/vyX6uTFwbt4cGhpG2dbPiJB1HMZ1m3o0cJCpw7vJ/"
 Sender = 'voroninnikita412@yandex.ru'
 Adresse = 'Xohshg@yandex.ru'
@@ -12,6 +14,7 @@ letter = '''From: {1}
 To: {2}
 Subject: {0}
 Content-Type: text/plain; charset="UTF-8";
+
 Привет, %friend_name%! %my_name% приглашает тебя на сайт %website%!
 
 %website% — это новая версия онлайн-курса по программированию. 
@@ -36,6 +39,5 @@ server = smtplib.SMTP_SSL('smtp.yandex.ru:465')
 login = os.getenv("LOGIN")
 password = os.getenv("PASSWORD")
 server.login(login, password)
-server.sendmail('voroninnikita412@yandex.ru', 'Xohshg@yandex.ru', letter)
+server.sendmail(sender_email, adresse_email, letter)
 server.quit()
-print(letter)
